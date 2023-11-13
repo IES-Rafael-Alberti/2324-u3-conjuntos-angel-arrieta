@@ -1,13 +1,20 @@
 import pytest
-from src.Ej_6_3 import function
+from src.Ej_6_3 import interseccion
 
 
 @pytest.mark.parametrize(
-    "inMensaje, outMensaje",
+    "inSet1, inSet2, outComun",
     [
-        ("Entrada1", "Salida1"),
-        ("Entrada2", "Salida2")
+        ({'e', 'q', 'w', 'y', 't', 'r'},
+         {'w', 'q', 's', 'f', 'd'},
+         {'q', 'w'}),
+        ({'y', 'e', 'd', 'x', 'z', 't', 'c', 'r'},
+         {'e', 'b', 'g', 'd', 'r', 'v', 'f'},
+         {'r', 'e', 'd'}),
+        ({'s', 'g', 'a', 'n', 't', 'b', 'd', 'f'},
+         {'u', 'z', 'h', 'x', 'c', 'k', 'y', 'o', 'i', 'j'},
+         set()),
     ]
 )
-def test_function(inMensaje, outMensaje):
-    assert function(inMensaje) == outMensaje
+def test_interseccion(inSet1, inSet2, outComun):
+    assert interseccion(inSet1, inSet2) == outComun

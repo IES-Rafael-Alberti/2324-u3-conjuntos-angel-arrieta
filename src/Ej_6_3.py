@@ -10,9 +10,15 @@ vocales = {'a', 'e', 'i', 'o', 'u'}
 """
 
 
-def function(example: str) -> str:
-    return None
+def interseccion(set1: set, set2: set) -> set:
+    comun = set1 & set2
+    return comun
 
 
 if __name__ == "__main__":
     vocales = {'a', 'e', 'i', 'o', 'u'}
+    cadena_consonates = "qwrtypsdfghjklñzxcvbnm"
+    lista_consonantes = list(cadena_consonates)
+    consonantes = set(lista_consonantes)
+    letras_comunes = interseccion(vocales, consonantes)
+    print(f"Las letras comunes entre las vocales y las consonantes son:{letras_comunes}")
