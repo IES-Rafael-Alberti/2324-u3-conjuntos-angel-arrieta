@@ -1,13 +1,15 @@
 import pytest
-from src.Ej_2_3 import function
+from src.Ej_2_3 import comprobar
 
 
 @pytest.mark.parametrize(
-    "inMensaje, outMensaje",
+    "inNombre, outError",
     [
-        ("Entrada1", "Salida1"),
-        ("Entrada2", "Salida2")
+        ("Ángel", 0),
+        ("J0s3 M4nu31", 1),
+        ("Jose Manuel Arrieta", 0),
+        ("Juan_Jose", 1)
     ]
 )
-def test_function(inMensaje, outMensaje):
-    assert function(inMensaje) == outMensaje
+def test_comprobar(inNombre, outError):
+    assert comprobar(inNombre) == outError
