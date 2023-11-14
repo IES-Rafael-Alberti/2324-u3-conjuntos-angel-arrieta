@@ -18,29 +18,27 @@ def conjunto_potencia(conjunto_total: set) -> list:
     """Función que devuelve en una lista los subconjuntos
     existentes dentro del conjunto introducido"""
     lista_potencia = []
-    longitud = len(conjunto_total)
     lista_potencia.append(set())
-    for unidad in conjunto_total:
-        lista_potencia.append({unidad})
-    for x in range(longitud, 0, -1):
-        accesible = list(conjunto_total.copy())
-        accesible.pop(x-1)
-        longitud_2 = len(accesible)
-        for i in range(longitud_2+1):
+    accesible = list(conjunto_total.copy())
+    for x in range(len(conjunto_total)):
+        if x != 0:
+            accesible.pop(0)
+        comb_posibles = 2 ** (len(accesible) - 1)
+        for i in range(comb_posibles):
             conjunto = []
-            for n in range(i):
-                conjunto.append(accesible[n])
-            if lista_potencia.count(set(conjunto)) > 0:
-                ""
-            else:
-                lista_potencia.append(set(conjunto))
-    lista_potencia.append(conjunto_total)
+            for n in accesible:
+                conjunto.append(n)
+                if lista_potencia.count(set(conjunto)) == 0:
+                    lista_potencia.append(set(conjunto))
+                else:
+                    if accesible.index(n) != 0:
+                        conjunto.remove(n)
     return lista_potencia
 
 
 if __name__ == "__main__":
     # Entrada
-    super_conjunto = {1, 2, 3}
+    super_conjunto = {6, 1, 4}
     # Proceso
     subconjuntos = conjunto_potencia(super_conjunto)
     # Salida
